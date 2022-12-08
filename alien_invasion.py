@@ -31,8 +31,6 @@ def run_game():
     stats = GameStats(ai_settings)
     scoreboard = Scoreboard(ai_settings, screen, stats)
 
-
-
     #Создание кнопки Play.
     play_button = Button(ai_settings, screen, "Play")
     
@@ -42,20 +40,20 @@ def run_game():
     #Запуск основного цикла игры
     while True:
         #Отслеживание событий клавиаутыр и мыши.
-        gf.check_ivents(ai_settings, screen, stats, play_button, ship, aliens, bullets)
+        gf.check_ivents(ai_settings, screen, stats, play_button, ship, aliens, bullets, scoreboard)
 
-        if stats.game_active:
+        if stats.game_active: 
             #Обновление корабля
             ship.update()
         
             #Обновление пули
-            gf.update_bullets(ai_settings, screen, ship, aliens, bullets)
+            gf.update_bullets(ai_settings, screen, ship, stats, scoreboard, aliens, bullets)
             # Тест количества пуль на экране
             #print(len(bullets))
 
 
             #Обновление пришельцев
-            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets)
+            gf.update_aliens(ai_settings, stats, screen, ship, aliens, bullets, scoreboard)
 
             gf.update_screen(ai_settings, screen, stats, scoreboard, ship, aliens, bullets, 
             play_button)
