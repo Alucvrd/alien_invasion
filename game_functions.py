@@ -90,7 +90,7 @@ def update_screen(ai_settings, screen, stats, scoreboard, ship, aliens, bullets,
     """Обновляет изображение на экране и отображает новый экран."""
     #Все пули выводятся позади изображений корабля и пришельцев.
 
-    screen.fill(ai_settings.bg_color)
+    screen.blit(ai_settings.bg_image, (0, 0))
     for bullet in bullets.sprites():
         bullet.draw_bullet()
     scoreboard.show_score()
